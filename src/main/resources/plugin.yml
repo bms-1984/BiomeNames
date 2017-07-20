@@ -1,0 +1,4 @@
+name: EventsMod
+version: 1.12
+author: bms_
+main: io.bms.events.EventsMod
