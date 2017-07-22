@@ -24,7 +24,7 @@ var spawnExplosion = function() {
 };
 
 // spawn a chicken horde
-var spawnChickens() {
+var spawnChickens = function() {
 	for (i = 0; i < 10; i++) {
 		JSFunctions.spawnEntity(0, 0, 1, 0, CHICKEN);
 	}
