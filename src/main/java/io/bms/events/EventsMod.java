@@ -24,7 +24,7 @@ import static io.bms.events.parsing.JSParse.scriptEngine;
  */
 public class EventsMod extends JavaPlugin {
 
-    public static int execDays;
+    public static int execTicks;
     public static String script;
     private FileConfiguration config;
     private static EventsMod instance;
@@ -95,7 +95,7 @@ public class EventsMod extends JavaPlugin {
                     EventsMod.logger.warning(sw.toString());
                 }
             }
-        }, 0L, (86400 * 20) / execDays);
+        }, 0L, execTicks);
     }
 
     @Override
