@@ -4,7 +4,7 @@ var JSFunctions = Java.type('io.bms.events.parsing.JSFunctions'); // NEVER remov
 
 // add your event functions here, along the lines of the storm example
 
-// random rain/thunder/lightning storm event
+// rain/thunder/lightning storm event
 var eventStorm = function() {
     	JSFunctions.startRain();
     	return "eventStorm"; // always return the event's function name
@@ -12,23 +12,23 @@ var eventStorm = function() {
 
 // spawn a fire
 // world IDs: 0 (overworld), 1 (nether), 2 (end)
-var spawnFire = function() {
+var eventFire = function() {
 	JSFunctions.spawnBlock(0, 0, 2, 0, FIRE);
-	return "spawnFire";
+	return "eventFire";
 };
 
 // spawn an explosion (does block damage)
-var spawnExplosion = function() {
+var eventExplosion = function() {
 	JSFunctions.explode(0, 0, 0, 0, 4);
-	return "spawnExplosion";
+	return "eventExplosion";
 };
 
 // spawn a chicken horde
-var spawnChickens = function() {
+var eventChickens = function(){
 	for (i = 0; i < 10; i++) {
 		JSFunctions.spawnEntity(0, 0, 1, 0, CHICKEN);
 	}
-	return "spawnChickens";
+	return "eventChickens";
 };
 
 var eventArray = [eventStorm] // add the names of your event functions to this array

@@ -26,7 +26,7 @@ public class JSParse {
         }
         // expose entities to JS
         for(EntityType type : EntityType.values()) {
-            scriptEngine.put(type.name(), type);
+            scriptEngine.put(type.name(), type.getEntityClass());
         }
         scriptEngine.eval(new FileReader(String.format("plugins/%s/%s", dataFolderName, EventsMod.script)));
     }
