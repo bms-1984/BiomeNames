@@ -28,6 +28,7 @@ public class JSParse {
         for(EntityType type : EntityType.values()) {
             scriptEngine.put(type.name(), type.getEntityClass());
         }
+        scriptEngine.put("SERVER", EventsMod.getInstance().getServer());
         scriptEngine.eval(new FileReader(String.format("plugins/%s/%s", dataFolderName, EventsMod.script)));
     }
 }

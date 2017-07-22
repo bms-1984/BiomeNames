@@ -106,7 +106,7 @@ public class EventsMod extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("runevent")) {
             if (sender instanceof Player) {
-                if (!((Player) sender).hasPermission("eventsmod.event.runevent")) {
+                if (!((Player) sender).hasPermission("events.runevent")) {
                     return true;
                 }
             }
@@ -137,6 +137,32 @@ public class EventsMod extends JavaPlugin {
             }
             else {
                 sender.sendMessage("The runevent command either takes one or zero arguments.");
+            }
+
+            return true;
+        }
+
+        if (cmd.getName().equalsIgnoreCase("parse")) {
+            if (sender instanceof Player) {
+                if (!((Player) sender).hasPermission("events.parse")) {
+                    return true;
+                }
+            }
+            if (args.length == 1) {
+                try {
+                    scriptEngine.eval(args[0]);
+                } catch (ScriptException e) {
+                    sender.sendMessage("That line is invalid Javascript.");
+                    StringWriter sw = new StringWriter();
+                    PrintWriter pw = new PrintWriter(sw);
+                    EventsMod.logger.warning("The line wasn't run because of an exception. Stacktrace:");
+                    e.printStackTrace(pw);
+                    EventsMod.logger.warning(sw.toString());
+                }
+                sender.sendMessage("Line running!");
+            }
+            else {
+                sender.sendMessage("The parse commands takes one argument.");
             }
 
             return true;

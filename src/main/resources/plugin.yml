@@ -6,5 +6,10 @@ commands:
    runevent:
       description: This command runs an event, either randomly chosen or specified.
       usage: /runevent [event name]
-      permission: eventsmod.event.runevent
+      permission: events.runevent
+      permission-message: You don't have permission to run that command.
+   parse:
+      description: This command parses and runs a single line of Javascript on-the-fly.
+      usage: /parse "Javascript one-liner"
+      permission: events.parse
       permission-message: You don't have permission to run that command.
