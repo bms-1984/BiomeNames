@@ -1,3 +1,3 @@
 general:
-  executeEventNTimesADay: 2
+  executeEveryNTicks: 1728000
   script: script.js

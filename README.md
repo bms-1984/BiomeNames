@@ -35,7 +35,7 @@ var eventChickens = function(){
 var eventStartMessage = function() {
         JSFunctions.broadcastMessage("The server has started.");
         return "eventStartMessage";
-}
+};
 
 var eventArray = [eventStorm] // add the names of your event functions to this array
 

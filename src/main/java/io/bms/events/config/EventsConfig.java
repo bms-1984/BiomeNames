@@ -10,7 +10,7 @@ public class EventsConfig {
 
     public static void initConfig(FileConfiguration config)  {
         config.options().copyDefaults(true);
-        EventsMod.execDays = config.getInt("general.executeEventNTimesADay");
+        EventsMod.execTicks = config.getInt("general.executeEveryNTicks");
         EventsMod.script = config.getString("general.script");
     }
 }
