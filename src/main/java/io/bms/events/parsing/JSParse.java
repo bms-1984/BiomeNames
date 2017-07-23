@@ -7,6 +7,7 @@ import org.bukkit.entity.EntityType;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -17,7 +18,7 @@ public class JSParse {
 
     public static ScriptEngine scriptEngine;
 
-    public JSParse(String dataFolderName, ClassLoader cl) throws FileNotFoundException, ScriptException {
+    public JSParse(File dataFolder, ClassLoader cl) throws FileNotFoundException, ScriptException {
         Thread.currentThread().setContextClassLoader(cl);
         this.scriptEngine = new ScriptEngineManager(cl).getEngineByName("nashorn");
         // expose blocks to JS
@@ -29,6 +30,6 @@ public class JSParse {
             scriptEngine.put(type.name(), type.getEntityClass());
         }
         scriptEngine.put("SERVER", EventsMod.getInstance().getServer());
-        scriptEngine.eval(new FileReader(String.format("plugins/%s/%s", dataFolderName, EventsMod.script)));
+        scriptEngine.eval(new FileReader(String.format("%s/%s", dataFolder.getAbsolutePath(), EventsMod.script)));
     }
 }

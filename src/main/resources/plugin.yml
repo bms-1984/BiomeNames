@@ -13,3 +13,8 @@ commands:
       usage: /parse "Javascript one-liner"
       permission: events.parse
       permission-message: You don't have permission to run that command.
+   loadevents:
+         description: This command reloads the Javascript scripts without restarting the server.
+         usage: /loadevents
+         permission: events.loadevents
+         permission-message: You don't have permission to run that command.

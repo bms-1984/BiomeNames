@@ -13,6 +13,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 import javax.script.Invocable;
 import javax.script.ScriptException;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ public class EventsMod extends JavaPlugin {
         EventsConfig.initConfig(config);
 
         try {
-            new JSParse(getDataFolder().getName(), this.getClass().getClassLoader());
+            new JSParse(getDataFolder(), this.getClass().getClassLoader());
         } catch (FileNotFoundException e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
@@ -164,6 +165,33 @@ public class EventsMod extends JavaPlugin {
             else {
                 sender.sendMessage("The parse commands takes one argument.");
             }
+            return true;
+        }
+
+        if (cmd.getName().equalsIgnoreCase("loadevents")) {
+            if (sender instanceof Player) {
+                if (!((Player) sender).hasPermission("events.loadevents")) {
+                    return true;
+                }
+            }
+            try {
+                scriptEngine.eval(new FileReader(String.format("%s/%s", getDataFolder().getAbsolutePath(), EventsMod.script)));
+            } catch (ScriptException e) {
+                sender.sendMessage("The scripts could not be loaded.");
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                EventsMod.logger.warning("The scripts weren't loaded because of an exception. Stacktrace:");
+                e.printStackTrace(pw);
+                EventsMod.logger.warning(sw.toString());
+            } catch (FileNotFoundException e) {
+                sender.sendMessage("The scripts could not be loaded.");
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                EventsMod.logger.warning("The scripts weren't loaded because of an exception. Stacktrace:");
+                e.printStackTrace(pw);
+                EventsMod.logger.warning(sw.toString());
+            }
+            sender.sendMessage("Scripts loaded.");
 
             return true;
         }
