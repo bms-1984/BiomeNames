@@ -1,1 +1,1 @@
-Go [here](https://github.com/BenjaminSutter/EventsMod-Scripts "Scripts repository") for an example script for use with the mod.
+Biome Naming per world.
