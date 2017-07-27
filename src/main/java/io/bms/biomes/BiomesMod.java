@@ -28,6 +28,7 @@ public class BiomesMod extends JavaPlugin {
         BiomesConfig.initConfig(config);
         saveConfig();
 
+        new BiomesListener();
         getServer().getPluginManager().registerEvents(new BiomesListener(), this);
     }
 
