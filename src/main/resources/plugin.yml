@@ -2,3 +2,9 @@ name: BiomesMod
 version: 1.12
 author: bms_
 main: io.bms.biomes.BiomesMod
+commands:
+   loadbiomes:
+      description: This command reloads the biome name configurations
+      usage: /loadbiomes
+      permission: biomes.loadbiomes
+      permission-message: You don't have permission to run that command.

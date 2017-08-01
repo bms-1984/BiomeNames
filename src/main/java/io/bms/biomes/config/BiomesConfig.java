@@ -1,6 +1,7 @@
 package io.bms.biomes.config;
 
 import io.bms.biomes.BiomesMod;
+import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -10,11 +11,11 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class BiomesConfig {
 
     public static void initConfig(FileConfiguration config)  {
-        config.options().copyDefaults(true);
-        String worldName = BiomesMod.getInstance().getServer().getWorlds().get(0).getName();
-        for (Biome biome : Biome.values()) {
-            if (!config.isSet(String.format("worlds.%s.biomes.%s", worldName, biome.name()))) {
-                config.set(String.format("worlds.%s.biomes.%s", worldName, biome.name()), biome.name());
+        for (World world : BiomesMod.getInstance().getServer().getWorlds()) {
+            for (Biome biome : Biome.values()) {
+                if (!config.isSet(String.format("worlds.%s.biomes.%s", world.getName(), biome.name()))) {
+                    config.set(String.format("worlds.%s.biomes.%s", world.getName(), biome.name()), biome.name());
+                }
             }
         }
     }
