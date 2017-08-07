@@ -2,6 +2,7 @@ name: BiomesMod
 version: 1.12
 author: bms_
 main: io.bms.biomes.BiomesMod
+softdepend: [Multiverse-Core]
 commands:
    loadbiomes:
       description: This command reloads the biome name configurations
