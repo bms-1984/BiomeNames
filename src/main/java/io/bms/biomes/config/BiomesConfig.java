@@ -24,7 +24,6 @@ public class BiomesConfig {
         FileConfiguration config = BiomesMod.getInstance().getConfig();
         if (config.isSet(String.format("worlds.%s.biomes.%s", worldName, biome.name())))
             return config.getString(String.format("worlds.%s.biomes.%s", worldName, biome.name()));
-        BiomesMod.logger.warning("Finished getCustomBiomeName with no return value, returning null.");
         return null;
     }
 }
