@@ -43,7 +43,7 @@ public class BiomesMod extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("loadbiomes")) {
             if (sender instanceof Player) {
-                if (!((Player) sender).hasPermission("biomes.loadbiomes")) {
+                if (!sender.hasPermission("biomes.loadbiomes")) {
                     return true;
                 }
             }
