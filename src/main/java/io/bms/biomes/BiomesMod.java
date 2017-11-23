@@ -14,10 +14,8 @@ import java.util.logging.Logger;
  * Created by benjaminsutter on 7/19/17.
  */
 public class BiomesMod extends JavaPlugin {
-
-    private FileConfiguration config;
     private static BiomesMod instance;
-    public static Logger logger;
+
     public static BiomesMod getInstance() {
         return instance;
     }
@@ -25,9 +23,9 @@ public class BiomesMod extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        logger = getLogger();
+        Logger logger = getLogger();
 
-        config = getConfig();
+        FileConfiguration config = getConfig();
         BiomesConfig.initConfig(config);
         saveConfig();
 
